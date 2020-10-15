@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>Pasta Pomodoro Intranet &copy;2005, Hierarchical Applications Limited - All Rights Reserved</title>
+	<title>Pasta Pomodoro Intranet &copy;2005-2006, Hierarchical Applications Limited - All Rights Reserved</title>
 
 	<META http-equiv=Content-Type content="text/html; charset=utf-8">
 
@@ -95,11 +95,49 @@
 
 <script language="JavaScript1.2" type="text/javascript">
 <!--//
+	// All code contained herein cannot be used for any purpose whatsoever unless specific written permission has been obtained from a duly authorized officer of Hierarchical Applications Limited, Inc.
+
 	function hideShowObject(id, bool) {
 		var dlObj = getGUIObjectInstanceById(id);
 		if (dlObj != null) {
 			dlObj.style.display = ((bool == true) ? const_inline_style : const_none_style);
 		}
+	}
+
+	var const_number_symbol = 'number';
+	
+	function ezTrim() {  
+		var s = this.replace(/^[\s]+/,"");  
+		s = s.replace(/[\s]+$/,"");  
+		return s;
+	}
+	
+	String.prototype.ezTrim = ezTrim;
+
+	function ezClientWidth() {
+		var _clientWid$ = -1;
+		var ta = typeof window.innerWidth;
+		if (ta.ezTrim().toUpperCase() == const_number_symbol.ezTrim().toUpperCase()) {
+			_clientWid$ = window.innerWidth;
+		} else if (document.documentElement && document.documentElement.clientWidth) {
+			_clientWid$ = document.documentElement.clientWidth;
+		} else if (document.body && document.body.clientWidth) {
+			_clientWid$ = document.body.clientWidth;
+		}
+		return _clientWid$;
+	}
+
+	function ezClientHeight() {
+		var _clientHt$ = -1;
+		var ta = typeof window.innerHeight;
+		if (ta.ezTrim().toUpperCase() == const_number_symbol.ezTrim().toUpperCase()) {
+			_clientHt$ = window.innerHeight;
+		} else if (document.documentElement && document.documentElement.clientHeight) {
+			_clientHt$ = document.documentElement.clientHeight;
+		} else if (document.body && document.body.clientHeight) {
+			_clientHt$ = document.body.clientHeight;
+		}
+		return _clientHt$;
 	}
 
 	var html_content = [];
@@ -124,9 +162,9 @@
 	var const_closeNoScript = '</noscript>';
 	
 	var parmsArray = [];
-	var _clientWidth = 0;
-	var _clientHeight = 0;
-	var default_confirmSiteLaunched = function () { alert('Programming Error - somebody forgot something - oops !'); };
+	var _clientWidth = ezClientWidth();
+	var _clientHeight = ezClientHeight();
+	var default_confirmSiteLaunched = function () { /*alert('Programming Error - somebody forgot something - oops !');*/ };
 	var _confirmSiteLaunched = default_confirmSiteLaunched;
 	try {
 		parmsArray = window.dialogArguments;
